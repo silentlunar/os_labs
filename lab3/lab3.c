@@ -13,6 +13,7 @@ int main() {
       oldman();
     else
       recreation();
+  getchar();
   return 0;
 }
 void oldman() {
