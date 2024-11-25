@@ -14,16 +14,16 @@ int main(void) {
   pthread_create(&thread_id, NULL, &Thread, NULL);
 
   while (1) {
-    acquire_lock();  // Захват блокировки
+    // acquire_lock();  // Захват блокировки
     printf("%s\n", sh);
-    release_lock();  // Освобождение блокировки
+    // release_lock();  // Освобождение блокировки
   }
 }
 
 void* Thread(void* pParams) {
   int counter = 0;
   while (1) {
-    acquire_lock();  // Захват блокировки
+    // acquire_lock();  // Захват блокировки
     if (counter % 2) {
       sh[0] = 'H';
       sh[1] = 'e';
@@ -39,7 +39,7 @@ void* Thread(void* pParams) {
       sh[4] = 'u';
       sh[5] = '\0';
     }
-    release_lock();  // Освобождение блокировки
+    // release_lock();  // Освобождение блокировки
     counter++;
   }
   return NULL;

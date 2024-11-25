@@ -42,8 +42,8 @@ int main() {
 
   clock_t end_time = clock();
 
-  printf("Total Sum: %lld\n", total_sum);
-  printf("Elapsed Time (Pthreads): %f seconds\n",
+  printf("Итоговая сумма: %lld\n", total_sum);
+  printf("Подсчитанное время (Pthreads): %f seconds\n",
          (double)(end_time - start_time) / CLOCKS_PER_SEC);
 
   return 0;

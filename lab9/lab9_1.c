@@ -3,12 +3,11 @@
 #include <unistd.h>
 
 char sh[6];
-int turn = 0;  // Переменная для спин-блокировки
+// int turn = 0;  // Переменная для спин-блокировки
 
 void* Thread(void* pParams) {
   int counter = 0;
   while (1) {
-    while (turn);  // Спин-блокировка
     if (counter % 2) {
       sh[0] = 'H';
       sh[1] = 'e';
@@ -24,9 +23,9 @@ void* Thread(void* pParams) {
       sh[4] = 'u';
       sh[5] = '\0';
     }
-    turn = 1;  // Установка turn для другого потока
     counter++;
-    usleep(100);
+    // usleep(100);  // Добавляем небольшую задержку для уменьшения нагрузки на
+    //                // процессор
   }
   return NULL;
 }
@@ -36,12 +35,10 @@ int main(void) {
   pthread_create(&thread_id, NULL, &Thread, NULL);
 
   while (1) {
-    while (!turn);  // Ждем, пока поток не освободит turn
     printf("%s\n", sh);
-    turn = 0;  // Возвращаем управление потоку
-    usleep(100);
+    // usleep(100);  // Небольшая задержка для снижения нагрузки
   }
 
-  pthread_join(thread_id, NULL);
+  // pthread_join(thread_id, NULL);
   return 0;
 }

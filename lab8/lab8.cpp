@@ -42,8 +42,8 @@ int main() {
   auto end_time = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> elapsed = end_time - start_time;
 
-  std::cout << "Total Sum: " << total_sum << "\n";
-  std::cout << "Elapsed Time (std::thread): " << elapsed.count()
+  std::cout << "Итоговая сумма: " << total_sum << "\n";
+  std::cout << "Подсчитанное время (std::thread): " << elapsed.count()
             << " seconds\n";
 
   return 0;
